@@ -2,25 +2,38 @@
 <SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="DVDStore">
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
-      <Items />
+      <Items>
+        <ConnectionNode Name="DESKTOP-PDAFJ6Q:DESKTOP-PDAFJ6Q\ronga">
+          <Created>2019-02-19T18:29:32.9291898-05:00</Created>
+          <Type>SQL</Type>
+          <Server>DESKTOP-PDAFJ6Q</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB>DVDStore</InitialDB>
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
         <FileNode Name="001-Create DVDStore Database and Schema.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-PDAFJ6Q:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-PDAFJ6Q</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>001-Create DVDStore Database and Schema.sql</FullPath>
         </FileNode>
         <FileNode Name="002-Insert Data into DVDStore.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-PDAFJ6Q:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-PDAFJ6Q</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>002-Insert Data into DVDStore.sql</FullPath>
         </FileNode>
         <FileNode Name="003-A bunch of queries of the DVDStore database.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-PDAFJ6Q:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-PDAFJ6Q</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>003-A bunch of queries of the DVDStore database.sql</FullPath>
         </FileNode>
