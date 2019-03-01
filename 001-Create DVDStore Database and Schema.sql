@@ -391,21 +391,32 @@ GO
 
 CREATE VIEW customer_list
 AS
-     SELECT cu.customer_id AS ID
-          , cu.first_name + ' ' + cu.last_name AS name
-          , a.address AS address
-          , a.postal_code AS zip_code
-          , a.phone AS phone
-          , city.city AS city
-          , country.country AS country
+     SELECT cu.customer_id
+            AS ID
+          , cu.first_name + ' ' + cu.last_name
+            AS name
+          , a.address
+            AS address
+          , a.postal_code
+            AS zip_code
+          , a.phone
+            AS phone
+          , city.city
+            AS city
+          , country.country
+            AS country
           , CASE
                 WHEN cu.active = 1
                 THEN 'active'
                 ELSE ''
-            END AS notes
-          , cu.store_id AS SID
-     FROM   customer AS cu
-            JOIN address AS a ON cu.address_id = a.address_id
+            END
+            AS notes
+          , cu.store_id
+            AS SID
+     FROM   customer
+          AS cu
+            JOIN address
+          AS a ON cu.address_id = a.address_id
             JOIN city ON a.city_id = city.city_id
             JOIN country ON city.country_id = country.country_id;
 GO
@@ -415,14 +426,22 @@ GO
 
 CREATE VIEW film_list
 AS
-     SELECT film.film_id AS FID
-          , film.title AS title
-          , film.description AS description
-          , category.name AS category
-          , film.rental_rate AS price
-          , film.length AS length
-          , film.rating AS rating
-          , actor.first_name + ' ' + actor.last_name AS actors
+     SELECT film.film_id
+            AS FID
+          , film.title
+            AS title
+          , film.description
+            AS description
+          , category.name
+            AS category
+          , film.rental_rate
+            AS price
+          , film.length
+            AS length
+          , film.rating
+            AS rating
+          , actor.first_name + ' ' + actor.last_name
+            AS actors
      FROM   category
             LEFT JOIN film_category ON category.category_id = film_category.category_id
             LEFT JOIN film ON film_category.film_id = film.film_id
@@ -436,16 +455,26 @@ GO
 
 CREATE VIEW staff_list
 AS
-     SELECT s.staff_id AS ID
-          , s.first_name + ' ' + s.last_name AS name
-          , a.address AS address
-          , a.postal_code AS zip_code
-          , a.phone AS phone
-          , city.city AS city
-          , country.country AS country
-          , s.store_id AS SID
-     FROM   staff AS s
-            JOIN address AS a ON s.address_id = a.address_id
+     SELECT s.staff_id
+            AS ID
+          , s.first_name + ' ' + s.last_name
+            AS name
+          , a.address
+            AS address
+          , a.postal_code
+            AS zip_code
+          , a.phone
+            AS phone
+          , city.city
+            AS city
+          , country.country
+            AS country
+          , s.store_id
+            AS SID
+     FROM   staff
+          AS s
+            JOIN address
+          AS a ON s.address_id = a.address_id
             JOIN city ON a.city_id = city.city_id
             JOIN country ON city.country_id = country.country_id;
 GO
@@ -456,17 +485,28 @@ GO
 CREATE VIEW sales_by_store
 AS
      SELECT s.store_id
-          , c.city + ',' + cy.country AS store
-          , m.first_name + ' ' + m.last_name AS manager
-          , SUM(p.amount) AS total_sales
-     FROM   payment AS p
-            INNER JOIN rental AS r ON p.rental_id = r.rental_id
-            INNER JOIN inventory AS i ON r.inventory_id = i.inventory_id
-            INNER JOIN store AS s ON i.store_id = s.store_id
-            INNER JOIN address AS a ON s.address_id = a.address_id
-            INNER JOIN city AS c ON a.city_id = c.city_id
-            INNER JOIN country AS cy ON c.country_id = cy.country_id
-            INNER JOIN staff AS m ON s.manager_staff_id = m.staff_id
+          , c.city + ',' + cy.country
+            AS store
+          , m.first_name + ' ' + m.last_name
+            AS manager
+          , SUM(p.amount)
+            AS total_sales
+     FROM   payment
+          AS p
+            INNER JOIN rental
+          AS r ON p.rental_id = r.rental_id
+            INNER JOIN inventory
+          AS i ON r.inventory_id = i.inventory_id
+            INNER JOIN store
+          AS s ON i.store_id = s.store_id
+            INNER JOIN address
+          AS a ON s.address_id = a.address_id
+            INNER JOIN city
+          AS c ON a.city_id = c.city_id
+            INNER JOIN country
+          AS cy ON c.country_id = cy.country_id
+            INNER JOIN staff
+          AS m ON s.manager_staff_id = m.staff_id
      GROUP BY s.store_id
             , c.city + ',' + cy.country
             , m.first_name + ' ' + m.last_name;
@@ -480,14 +520,22 @@ GO
 
 CREATE VIEW sales_by_film_category
 AS
-     SELECT c.name AS category
-          , SUM(p.amount) AS total_sales
-     FROM   payment AS p
-            INNER JOIN rental AS r ON p.rental_id = r.rental_id
-            INNER JOIN inventory AS i ON r.inventory_id = i.inventory_id
-            INNER JOIN film AS f ON i.film_id = f.film_id
-            INNER JOIN film_category AS fc ON f.film_id = fc.film_id
-            INNER JOIN category AS c ON fc.category_id = c.category_id
+     SELECT c.name
+            AS category
+          , SUM(p.amount)
+            AS total_sales
+     FROM   payment
+          AS p
+            INNER JOIN rental
+          AS r ON p.rental_id = r.rental_id
+            INNER JOIN inventory
+          AS i ON r.inventory_id = i.inventory_id
+            INNER JOIN film
+          AS f ON i.film_id = f.film_id
+            INNER JOIN film_category
+          AS fc ON f.film_id = fc.film_id
+            INNER JOIN category
+          AS c ON fc.category_id = c.category_id
      GROUP BY c.name;
 GO
 
